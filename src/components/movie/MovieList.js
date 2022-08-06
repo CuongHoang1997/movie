@@ -3,12 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import useSWR from "swr";
 import { fetcher, movieAPI } from "../../config.js";
+import { useEffect } from "react";
 
 const MovieList = ({ type = "now_playing" }) => {
   const { data } = useSWR(movieAPI.getMovieList(type), fetcher);
   const movies = data?.results || [];
   return (
-    <div className="movies-list">
+    <div className="movies-list relative">
       <Swiper grabCursor={"true"} spaceBetween={40} slidesPerView={"auto"}>
         {movies.length > 0 &&
           movies.map((item) => {

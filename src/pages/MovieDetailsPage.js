@@ -25,8 +25,8 @@ const MovieDetailsPage = () => {
   } = data;
   console.log(data);
   return (
-    <Fragment>
-      <div className="movie-detail flex mx-20 mb-10 h-[600px]">
+    <div className="grid-system wide ">
+      <div className="movie-detail flex mx-20 mb-10 h-[600px] ">
         <div className="flex w-[800px] bg-slate-900 ">
           <img
             src={`${imgStart}/${poster_path}`}
@@ -92,16 +92,16 @@ const MovieDetailsPage = () => {
         <MovieSimilar></MovieSimilar>
       </div>
       <MovieCredits></MovieCredits>
-      <div className="ml-20 w-[800px] mb-5">
+      <div className="ml-20 w-[800px] mb-5 movie-detail">
         <h1 className=" text-3xl mb-5 font-bold">Movie Review</h1>
         <span className="text-green-500">{overview}</span>
       </div>
       <MovieReview></MovieReview>
-    </Fragment>
+    </div>
   );
 };
 
-function MovieCredits() {
+function MovieCredits({ className = "" }) {
   const { movieId } = useParams();
   const { data, error } = useSWR(
     `${apiStart}/${movieId}/credits?api_key=${apiKey}`,
@@ -112,9 +112,9 @@ function MovieCredits() {
   if (!cast || cast.length <= 0) return null;
 
   return (
-    <div className="">
-      <h1 className="ml-20 text-3xl mb-5 font-bold ">Casts: </h1>
-      <div className="ml-20 grid grid-cols-5 w-[750px] gap-4 mb-10">
+    <div className="ml-20 cast movie-detail">
+      <h1 className=" text-3xl mb-5 font-bold ">Casts: </h1>
+      <div className=" grid grid-cols-5 w-[750px] gap-4 mb-10">
         {cast.slice(0, 5).map((item, index) => (
           <div className="cast-item" key={index}>
             <img
@@ -143,17 +143,17 @@ function MovieReview() {
   if (!results || results.length <= 0) return null;
   return (
     <div>
-      <div className="">
+      <div>
         {results.slice(0, 1).map((item, index) => (
-          <div className="ml-20 mb-10 text-green-500" key={index}>
-            <iframe
-              width="800"
-              height="455"
-              src={`https://www.youtube.com/embed/${item.key}`}
-              title="TRUNG ORIANNA | ANH TRUNG ĐIỀU BI NHƯNG KHÔNG PHẢI LÀ JANGBII, BI NÀY NÓ LẠ LẮM"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
-          </div>
+          <iframe
+            width="800"
+            height="455"
+            src={`https://www.youtube.com/embed/${item.key}`}
+            title="TRUNG ORIANNA | ANH TRUNG ĐIỀU BI NHƯNG KHÔNG PHẢI LÀ JANGBII, BI NÀY NÓ LẠ LẮM"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="review ml-20 mb-10 text-green-500"
+            key={index}
+          ></iframe>
         ))}
       </div>
     </div>
@@ -173,7 +173,7 @@ function MovieSimilar() {
   console.log("video", results);
 
   return (
-    <div className=" pl-5 w-[400px] item-end">
+    <div className="similar pl-5 w-[400px] item-end ">
       <h1 className="text-2xl font-bold mb-3">Similar movies</h1>{" "}
       {results.slice(0, 9).map((item, index) => (
         <div

@@ -3,8 +3,8 @@ import MovieList from "../components/movie/MovieList";
 
 const HomePage = () => {
   return (
-    <Fragment>
-      <section className="movies-layout page-container pb-12">
+    <div className="grid-system wide">
+      <section className="movies-layout page-container pb-12 ">
         <h2 className="text-white mb-5 text-2xl font-bold capitalize">
           Now Playing
         </h2>
@@ -22,7 +22,7 @@ const HomePage = () => {
         </h2>
         <MovieList type="upcoming"></MovieList>
       </section>
-    </Fragment>
+    </div>
   );
 };
 
