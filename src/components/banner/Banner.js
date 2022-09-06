@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
-import { log } from "@craco/craco/lib/logger";
 
 const Banner = () => {
   const { data } = useSWR(`${apiStart}/popular?api_key=${apiKey}`, fetcher);
@@ -12,7 +11,7 @@ const Banner = () => {
   console.log(movies);
 
   return (
-    <section className="banner h-[500px] page-container mb-12 overflow-hidden ">
+    <section className="banner page-container mb-12 mt-[150px] overflow-hidden ">
       <Swiper grabCursor={"true"} slidesPerView={"auto"} className="h-full">
         {movies.length > 0 &&
           movies.map((item) => (
@@ -37,8 +36,8 @@ function BannerItem({ item }) {
         className="w-full h-full object-cover rounded-lg "
       />
       <div className="absolute left-5 bottom-5 w-full text-white">
-        <h2 className="font-bold text-3xl mb-5">{item.title}</h2>
-        <div className="flex items-center gap-x-3 mb-6">
+        <h2 className="font-bold text-[60px] mb-5">{item.title}</h2>
+        <div className="flex items-center gap-x-3 mb-6 text-[30px]">
           <span className="py-1 px-4 border-2 border-white rounded-md font-bold">
             Actions
           </span>
@@ -49,7 +48,12 @@ function BannerItem({ item }) {
             Drama
           </span>
         </div>
-        <Button onClick={() => navigate(`/movie/${item.id}`)}>Watch now</Button>
+        <Button
+          className="px-20 py-5 text-[25px]"
+          onClick={() => navigate(`/movie/${item.id}`)}
+        >
+          Watch now
+        </Button>
       </div>
     </div>
   );

@@ -2,15 +2,15 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-black w-full h-[180px] ">
-      <div className="flex justify-around pt-4 mb-8 ">
+    <div className="bg-purple-500 w-full h-[280px] ">
+      <div className="flex justify-around ">
         <img
           src="https://www.nicepng.com/png/full/436-4369539_movie-logo-film.png"
           alt=""
-          className="h-20 w-[250px]"
+          className=" mt-5"
         />
-        <div>
-          <span classname="font-bold">Contact:</span>
+        <div className="mt-5 text-2xl">
+          <p classname="font-extrabold text-blue-500 ">Contact:</p>
           <div className="opacity-80 cursor-pointer block">
             <ul>
               <li className="link">
@@ -25,7 +25,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div>
+        <div className="mt-5 text-2xl">
           <span classname="font-bold">Help?</span>
           <div className="opacity-80 cursor-pointer">
             <ul>
@@ -34,7 +34,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div>
+        <div className="mt-5 text-2xl">
           <span classname="font-bold">Information</span>
           <div className="opacity-80 cursor-pointer">
             <ul>
@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <span className="block text-center">
+      <span className="block text-center text-xl">
         © 2022 Copyright MyMovie.com All Rights reserved.
       </span>
     </div>

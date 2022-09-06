@@ -42,15 +42,14 @@ const MoviePage = () => {
     setItemOffset(newOffset);
     setNextPage(event.selected + 1);
   };
-  console.log(movies);
 
   return (
     <div className="grid-system wide">
-      <div className="flex mb-5 page-container ">
-        <div className="flex-1 ">
+      <div className="flex mb-5">
+        <div className="flex-1 mt-[100px] mx-20 rounded-lg">
           <input
             type="text"
-            className="w-full py-2 rounded-l-sm bg-slate-700 text-white px-3 outline-none "
+            className="w-full py-5 rounded-sm bg-white shadow text-black px-3 outline-none text-2xl"
             placeholder="Type to search..."
             onChange={handleFilter}
           />
@@ -60,19 +59,19 @@ const MoviePage = () => {
       {loading && (
         <div className="w-10 h-10 rounded-full border-4 border-primary border-t-transparent animate-spin mx-auto"></div>
       )}
-      <div className=" page-container grid grid-cols-4 gap-10 movies">
+      <div className=" grid grid-cols-5 gap-5 mx-10 movies">
         {movies.length > 0 &&
           movies.map((item) => {
             return <MovieCard key={item.id} item={item}></MovieCard>;
           })}
       </div>
-      <div className=" px-5">
+      <div className=" px-5 mx-10">
         <ReactPaginate
           breakLabel="..."
           nextLabel={
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-10 w-10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -87,11 +86,11 @@ const MoviePage = () => {
           }
           onPageChange={handlePageClick}
           pageRangeDisplayed={1}
-          pageCount={pageCount}
+          pageCount={pageCount / 20}
           previousLabel={
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-10 w-10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
